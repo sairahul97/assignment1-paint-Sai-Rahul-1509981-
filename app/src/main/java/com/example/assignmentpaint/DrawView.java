@@ -1,8 +1,9 @@
 package com.example.assignmentpaint;
 
+
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
+
 import android.graphics.Paint;
 import android.graphics.PointF;
 import android.util.AttributeSet;
@@ -11,12 +12,14 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.Random;
+
 
 public class DrawView extends View implements View.OnTouchListener {
 
 
     PointF point = new PointF();
-    ArrayList<PointF> points = new ArrayList<PointF>();
+    ArrayList<Point> points = new ArrayList<Point>();
     MainActivity main = new MainActivity();
     private boolean clear;
 
@@ -48,18 +51,31 @@ public class DrawView extends View implements View.OnTouchListener {
 
         Paint paint = new Paint();
 
-                paint.setColor(Color.RED);
-for(int i=0;i<points.size();i++){
+              //  paint.setColor(Color.RED);
+//for(int i=0;i<points.size();i++){
+   // canvas.drawCircle(points.get(i).x,points.get(i).y,50,paint);
+//}
 
-    canvas.drawCircle(points.get(i).x,points.get(i).y,50,paint);
-}
+
+        for (Point pt : points)
+        {
+            paint.setColor(pt.colour);
+            canvas.drawCircle(pt.x,pt.y,30,paint);
+        }
+
 
     }
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
 
-        points.add(new PointF(event.getX(),event.getY()));
+
+       // points.add(new PointF(event.getX(),event.getY()));
+        for(int i=0;i<event.getPointerCount();i++)
+        {
+            points.add(new Point(event.getX(i),event.getY(i),new Random().nextInt()));
+        }
+
         invalidate();
         return true;
     }
