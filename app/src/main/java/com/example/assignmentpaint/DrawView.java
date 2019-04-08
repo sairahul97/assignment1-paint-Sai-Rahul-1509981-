@@ -69,7 +69,7 @@ float radius = 50;
         for (Point pt : points)
         {
             paint.setColor(pt.colour);
-            canvas.drawCircle(pt.x,pt.y,radius,paint);
+            canvas.drawCircle(pt.x,pt.y,pt.radius,paint);
         }
 
 //        for(PaintCoordinate pc : points) {
