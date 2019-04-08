@@ -23,27 +23,16 @@ public class DrawView extends View implements View.OnTouchListener {
     MainActivity main = new MainActivity();
     private boolean clear;
 
-    class PaintCoordinate
-    {
-        Point pt;
-        float radius;
-    }
-    ArrayList <PaintCoordinate> pointss = new ArrayList<PaintCoordinate>();
-
-    public float getRadius() {
-        return radius;
-    }
 
     public void setRadius(float radius) {
-        this.radius = radius;
+
+
+      this.radius = radius;
 
 
     }
 
-    float radius = 5;
-
-
-
+float radius = 50;
     public DrawView(Context context) {
         super(context);
         setOnTouchListener(this);
@@ -77,18 +66,21 @@ public class DrawView extends View implements View.OnTouchListener {
 //}
 
 
-//        for (Point pt : points)
-//        {
-//            paint.setColor(pt.colour);
-//            canvas.drawCircle(pt.x,pt.y,30,paint);
-//        }
-
-        for(PaintCoordinate pc : points) {
-            canvas.drawCircle(pc.pt.x, pc.pt.y, pc.radius, paint);
+        for (Point pt : points)
+        {
+            paint.setColor(pt.colour);
+            canvas.drawCircle(pt.x,pt.y,radius,paint);
         }
+
+//        for(PaintCoordinate pc : points) {
+//            canvas.drawCircle(pc.pt.x, pc.pt.y, pc.radius, paint);
+//        }
 
 
     }
+
+
+
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
@@ -97,7 +89,7 @@ public class DrawView extends View implements View.OnTouchListener {
        // points.add(new PointF(event.getX(),event.getY()));
         for(int i=0;i<event.getPointerCount();i++)
         {
-            points.add(new Point(event.getX(i),event.getY(i),new Random().nextInt()));
+            points.add(new Point(event.getX(i),event.getY(i),new Random().nextInt(),radius));
         }
 
         invalidate();
