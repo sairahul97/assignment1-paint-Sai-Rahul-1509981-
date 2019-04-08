@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final DrawView pv = findViewById(R.id.pv);
+        int i=0;
 
     }
 
