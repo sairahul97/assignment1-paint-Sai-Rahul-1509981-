@@ -2,6 +2,8 @@ package com.example.assignmentpaint;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.SeekBar;
 
 
@@ -15,7 +17,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final DrawView pv = findViewById(R.id.pv);
-        int i=0;
+       // int i=0;
+
+       final DrawView btn = new DrawView();
+
+        Button undo = findViewById(R.id.button);
+        Button redo = findViewById(R.id.button2);
+
+        undo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+btn.Undo();
+            }
+        });
+
+        redo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn.Redo();
+            }
+        });
 
 
         SeekBar seekBar = findViewById(R.id.seekBar);

@@ -32,6 +32,30 @@ public class DrawView extends View implements View.OnTouchListener {
 //    mPath = new Path();
 //        paths.add(mPath);
 
+    public  void Undo(){
+        if (paths.size()>0)
+        {
+            undonePaths.add(paths.remove(paths.size()-1));
+            invalidate();
+        }
+        else
+        {
+
+        }
+    }
+
+    public void Redo(){
+        if (undonePaths.size()>0)
+        {
+            paths.add(undonePaths.remove(undonePaths.size()-1));
+            invalidate();
+        }
+        else
+        {
+
+        }
+    }
+
     public void setRadius(float radius) {
       this.radius = radius;
     }
