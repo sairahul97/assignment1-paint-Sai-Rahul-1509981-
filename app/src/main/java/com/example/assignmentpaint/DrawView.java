@@ -33,6 +33,8 @@ public class DrawView extends View implements View.OnTouchListener {
 //    mPath = new Path();
 //        paths.add(mPath);
 
+
+    //UNDO FUNCTION ON PAINT
     public  void Undo(){
         if (points.size()>0)
         {
@@ -43,6 +45,7 @@ public class DrawView extends View implements View.OnTouchListener {
 
     }
 
+    //REDO FUNCTION ON PAINT
     public void Redo(){
         if (redo.size()>0)
         {
@@ -57,19 +60,12 @@ public class DrawView extends View implements View.OnTouchListener {
       this.radius = radius;
     }
 
-float radius = 50;
+float radius = 20;
     public DrawView(Context context) {
         super(context);
         setOnTouchListener(this);
         point.x = 300;
         point.y = 300;
-    }
-
-    public DrawView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        setOnTouchListener(this);
-        point.x = 300;
-        point.y=300;
     }
 
     public DrawView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -79,6 +75,14 @@ float radius = 50;
         point.y=300;
     }
 
+
+
+    public DrawView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        setOnTouchListener(this);
+        point.x = 300;
+        point.y=300;
+    }
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);

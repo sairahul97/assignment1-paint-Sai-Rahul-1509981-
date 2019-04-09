@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     DrawView btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
