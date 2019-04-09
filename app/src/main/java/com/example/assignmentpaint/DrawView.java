@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.PointF;
 import android.util.AttributeSet;
 
@@ -21,15 +22,18 @@ public class DrawView extends View implements View.OnTouchListener {
     PointF point = new PointF();
     ArrayList<Point> points = new ArrayList<Point>();
     MainActivity main = new MainActivity();
-    private boolean clear;
+//    private boolean clear;
 
+//    private Path    mPath;
+
+    private ArrayList<Path> paths = new ArrayList<Path>();
+    private ArrayList<Path> undonePaths = new ArrayList<Path>();
+
+//    mPath = new Path();
+//        paths.add(mPath);
 
     public void setRadius(float radius) {
-
-
       this.radius = radius;
-
-
     }
 
 float radius = 50;
