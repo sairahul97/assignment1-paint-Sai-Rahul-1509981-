@@ -21,39 +21,36 @@ public class DrawView extends View implements View.OnTouchListener {
 
     PointF point = new PointF();
     ArrayList<Point> points = new ArrayList<Point>();
+    ArrayList<Point> redo = new ArrayList<Point>();
+
     MainActivity main = new MainActivity();
 //    private boolean clear;
 
-//    private Path    mPath;
+//   private Path    mPath;
 
-    private ArrayList<Path> paths = new ArrayList<Path>();
-    private ArrayList<Path> undonePaths = new ArrayList<Path>();
+
 
 //    mPath = new Path();
 //        paths.add(mPath);
 
     public  void Undo(){
-        if (paths.size()>0)
+        if (points.size()>0)
         {
-            undonePaths.add(paths.remove(paths.size()-1));
+            redo.add(points.get(points.size()-1));
+            points.remove(points.size()-1);
             invalidate();
         }
-        else
-        {
 
-        }
     }
 
     public void Redo(){
-        if (undonePaths.size()>0)
+        if (redo.size()>0)
         {
-            paths.add(undonePaths.remove(undonePaths.size()-1));
+            points.add(redo.get(redo.size()-1));
+            redo.remove(redo.size()-1);
             invalidate();
         }
-        else
-        {
 
-        }
     }
 
     public void setRadius(float radius) {
@@ -118,6 +115,7 @@ float radius = 50;
         for(int i=0;i<event.getPointerCount();i++)
         {
             points.add(new Point(event.getX(i),event.getY(i),new Random().nextInt(),radius));
+
         }
 
         invalidate();

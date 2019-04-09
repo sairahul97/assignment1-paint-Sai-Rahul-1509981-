@@ -10,16 +10,16 @@ import android.widget.SeekBar;
 public class MainActivity extends AppCompatActivity {
 
 
-
+    DrawView btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final DrawView pv = findViewById(R.id.pv);
+        btn = findViewById(R.id.pv);
        // int i=0;
 
-       final DrawView btn = new DrawView();
+
 
         Button undo = findViewById(R.id.button);
         Button redo = findViewById(R.id.button2);
@@ -44,8 +44,8 @@ btn.Undo();
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-               pv.setRadius(i);
-                pv.invalidate();
+               btn.setRadius(i);
+                btn.invalidate();
             }
 
             @Override
